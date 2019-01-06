@@ -1,7 +1,8 @@
-package com.test.headytest
+package com.test.headytest.ui.home
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.test.headytest.R
 
 class MainActivity : AppCompatActivity() {
 
