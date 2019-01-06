@@ -1,7 +1,7 @@
 package com.test.headytest.di
 
 import android.app.Application
-import com.tejas.helpers.constants.Constants.Companion.BASE_URL
+import com.test.headytest.constants.Constants.Companion.BASE_URL
 import com.test.helpers.di.AppModule
 import com.test.helpers.di.RetrofitModule
 import okhttp3.Interceptor

@@ -5,6 +5,12 @@ import android.util.Base64
 import com.test.headytest.repository.AppRealmModule
 import com.tejas.helpers.constants.Constants.Companion.REALM_DB_MYAPP
 import com.tejas.helpers.constants.Constants.Companion.REALM_ENCRYPTION_KEY
+import com.test.headytest.ui.home.CategoryDao
+import com.test.headytest.ui.home.RealmCategoryDao
+import com.test.headytest.ui.product.ProductDao
+import com.test.headytest.ui.product.RealmProductDao
+import com.test.headytest.ui.product.variants.RealmVariantDao
+import com.test.headytest.ui.product.variants.VariantDao
 import dagger.Module
 import dagger.Provides
 import io.realm.Realm
@@ -52,4 +58,16 @@ class RealmModule constructor(private val mContext: Context) {
             return Realm.getDefaultInstance()
         }
     }
+
+    @Singleton
+    @Provides
+    fun provideCategoryDao(realm: Realm): CategoryDao = RealmCategoryDao(realm)
+
+    @Singleton
+    @Provides
+    fun provideProductDao(realm: Realm): ProductDao = RealmProductDao(realm)
+
+    @Singleton
+    @Provides
+    fun provideVariantDao(realm: Realm): VariantDao = RealmVariantDao(realm)
 }
