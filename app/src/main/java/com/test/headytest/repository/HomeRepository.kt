@@ -23,12 +23,12 @@ class HomeRepository @Inject constructor(private val mExecutors: AppExecutors, m
     fun getData(): LiveData<Resource<List<Category>>> {
         val result = MediatorLiveData<Resource<List<Category>>>()
         val db = mCategoryDao.getCategories()
+        result.value = Resource.loading(null)
         result.addSource(db) {categories ->
             if(categories?.isNotEmpty()!!) {
                 result.value = Resource.success(categories)
-            } else {
-                result.value = Resource.loading(null)
             }
+            result.removeSource(db)
         }
 
         mExecutors.networkIO().execute {
